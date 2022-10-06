@@ -1,6 +1,8 @@
 # Read Me #
 # IoTWebSCADA_convert_Python_into_DotnetCore
 
+Frontend Project: convertFrontend
+
 MS SQL Server, Asp.Net Core6 in Visual Studio 22?
 Libs:
 Microsoft.EntityFrameworkCore
