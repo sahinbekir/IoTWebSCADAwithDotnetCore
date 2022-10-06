@@ -2,6 +2,7 @@
 using IoTWebSCADA_convert_Python_into_DotnetCore.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IoTWebSCADA_convert_Python_into_DotnetCore.Controllers
 {
@@ -16,6 +17,12 @@ namespace IoTWebSCADA_convert_Python_into_DotnetCore.Controllers
             _IoTWS_DbContext = iotws_DbContext;
         }
 
+        //Read All List
+        [HttpGet]
+        public async Task<IEnumerable<DeviceTelemetry>> Get()
+
+            => await _IoTWS_DbContext.DeviceTelemetries.ToListAsync();
+        
         // Find DeviceTelemetry with Id
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(DeviceTelemetry), StatusCodes.Status200OK)]

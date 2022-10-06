@@ -35,12 +35,12 @@ namespace IoTWebSCADA_convert_Python_into_DotnetCore.Controllers
         }
 
         //Search with MIOName
-        [HttpGet("search/{mioname}")]
+        [HttpGet("search/{title}")]
         [ProducesResponseType(typeof(IOScript), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetByTitle(string mioname)
+        public async Task<IActionResult> GetByTitle(string masterdeviceuid)
         {
-            var ioscript = await _IoTWS_DbContext.IOScripts.SingleOrDefaultAsync(c => c.MasterIOName == mioname);
+            var ioscript = await _IoTWS_DbContext.IOScripts.SingleOrDefaultAsync(c => c.MasterDeviceUID == masterdeviceuid);
             return ioscript == null ? NotFound("Bu MION Cihazının Bir Connectionu Yok.") : Ok(ioscript);
         }
         //Connection Add
